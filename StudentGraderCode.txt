@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Student {
+    public string Name;
+    public int Mark;
+    public Student(string name, int mark) { Name = name; Mark = mark; }
+}
+
+class Program {
+    static string GradeOf(int mark) {
+        if (mark >= 85) return "A";
+        if (mark >= 70) return "B";
+        if (mark >= 50) return "C";
+        return "F";
+    }
+
+    static void Main() {
+        List<Student> students = new List<Student>();
+        string file = "students.csv"; // Name,Mark
+
+        // load if exists
+        if (File.Exists(file)) {
+            string[] lines = File.ReadAllLines(file);
+            for (int i = 1; i < lines.Length; i++) {
+                if (lines[i].Trim().Length == 0) continue;
+                string[] p = lines[i].Split(',');
+                int m;
+                if (p.Length == 2 && int.TryParse(p[1], out m))
+                    students.Add(new Student(p[0].Trim(), m));
+            }
+        }
+
+        while (true) {
+            Console.WriteLine("\n== Student Grade Analyzer ==");
+            Console.WriteLine("1) Add mark");
+            Console.WriteLine("2) List with grades");
+            Console.WriteLine("3) Class stats");
+            Console.WriteLine("4) Save & Exit");
+            Console.Write("Choice: ");
+            string c = Console.ReadLine();
+
+            if (c == "1") {
+                Console.Write("Name: "); string name = Console.ReadLine();
+                Console.Write("Mark (0-100): "); string s = Console.ReadLine();
+                int mark;
+                if (string.IsNullOrWhiteSpace(name) || !int.TryParse(s, out mark) || mark < 0 || mark > 100) {
+                    Console.WriteLine("Invalid input.");
+                    continue;
+                }
+                students.Add(new Student(name.Trim(), mark));
+            }
+            else if (c == "2") {
+                if (students.Count == 0) { Console.WriteLine("No records."); continue; }
+                Console.WriteLine("Name\tMark\tGrade");
+                for (int i = 0; i < students.Count; i++) {
+                    Console.WriteLine(students[i].Name + "\t" + students[i].Mark + "\t" + GradeOf(students[i].Mark));
+                }
+            }
+            else if (c == "3") {
+                if (students.Count == 0) { Console.WriteLine("No records."); continue; }
+                int sum = 0, max = int.MinValue, min = int.MaxValue;
+                string maxN = "", minN = "";
+                for (int i = 0; i < students.Count; i++) {
+                    int m = students[i].Mark;
+                    sum += m;
+                    if (m > max) { max = m; maxN = students[i].Name; }
+                    if (m < min) { min = m; minN = students[i].Name; }
+                }
+                double avg = (double)sum / students.Count;
+                Console.WriteLine("Count: " + students.Count + "  Avg: " + avg.ToString("0.00"));
+                Console.WriteLine("Top: " + maxN + " " + max + "  Low: " + minN + " " + min);
+            }
+            else if (c == "4") {
+                List<string> lines = new List<string>();
+                lines.Add("Name,Mark");
+                for (int i = 0; i < students.Count; i++)
+                    lines.Add(students[i].Name + "," + students[i].Mark);
+                File.WriteAllLines(file, lines.ToArray());
+                Console.WriteLine("Saved to " + file);
+                break;
+            }
+            else Console.WriteLine("Invalid choice.");
+        }
+    }
+}

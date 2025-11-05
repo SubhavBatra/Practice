@@ -1,0 +1,14 @@
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/bin/Debug/net8.0/StudentApp
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/bin/Debug/net8.0/StudentApp.deps.json
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/bin/Debug/net8.0/StudentApp.runtimeconfig.json
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/bin/Debug/net8.0/StudentApp.dll
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/bin/Debug/net8.0/StudentApp.pdb
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.AssemblyInfoInputs.cache
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.AssemblyInfo.cs
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.csproj.CoreCompileInputs.cache
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.dll
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/refint/StudentApp.dll
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.pdb
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/StudentApp.genruntimeconfig.cache
+/Users/subhavbatra/Desktop/Code/C#_program/StudentApp/obj/Debug/net8.0/ref/StudentApp.dll

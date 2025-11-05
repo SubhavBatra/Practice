@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Program
+{
+    class ScoreStats
+    {
+        public int TotalScore = 0;
+        public int Count = 0;
+    }
+
+    static void Main(string[] args)
+    {
+        string fileName = "scores.csv";
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine("scores.csv not found. Create it first.");
+            return;
+        }
+
+        // Dictionary: studentName -> stats
+        Dictionary<string, ScoreStats> scoreMap = new Dictionary<string, ScoreStats>();
+
+        // For class-wide stats
+        int globalTotal = 0;
+        int globalCount = 0;
+
+        int globalMax = int.MinValue;
+        string globalMaxName = "";
+
+        int globalMin = int.MaxValue;
+        string globalMinName = "";
+
+        string[] lines = File.ReadAllLines(fileName);
+        // skip header line (Name,Score)
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i].Trim();
+            if (line.Length == 0) continue;
+
+            string[] parts = line.Split(',');
+            if (parts.Length != 2) continue;
+
+            string name = parts[0].Trim();
+            int score;
+            if (!int.TryParse(parts[1].Trim(), out score))
+            {
+                // bad line, skip
+                continue;
+            }
+
+            // update per-student stats
+            if (!scoreMap.ContainsKey(name))
+            {
+                scoreMap[name] = new ScoreStats();
+            }
+
+            scoreMap[name].TotalScore += score;
+            scoreMap[name].Count += 1;
+
+            // update global stats
+            globalTotal += score;
+            globalCount += 1;
+
+            if (score > globalMax)
+            {
+                globalMax = score;
+                globalMaxName = name;
+            }
+
+            if (score < globalMin)
+            {
+                globalMin = score;
+                globalMinName = name;
+            }
+        }
+
+        // Print per-student averages
+        Console.WriteLine("Per-student average:");
+        foreach (var entry in scoreMap)
+        {
+            string student = entry.Key;
+            ScoreStats stats = entry.Value;
+            double avg = stats.Count > 0 ? (double)stats.TotalScore / stats.Count : 0.0;
+            Console.WriteLine(student + " -> " + avg);
+        }
+        Console.WriteLine();
+
+        // Print class stats
+        if (globalCount > 0)
+        {
+            double classAvg = (double)globalTotal / globalCount;
+            Console.WriteLine("Class average score: " + classAvg);
+            Console.WriteLine("Highest single score: " + globalMax + " by " + globalMaxName);
+            Console.WriteLine("Lowest  single score: " + globalMin + " by " + globalMinName);
+        }
+        else
+        {
+            Console.WriteLine("No valid scores found.");
+        }
+    }
+}

@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+
+class Product {
+    public string Id, Name; public int Qty; public double Price;
+    public Product(string id,string name,int qty,double price){ Id=id; Name=name; Qty=qty; Price=price; }
+    public double Value(){ return Qty*Price; }
+}
+
+class Program {
+    static void Main() {
+        List<Product> items = new List<Product>();
+
+        while(true){
+            Console.WriteLine("\n== Inventory ==");
+            Console.WriteLine("1) Add product");
+            Console.WriteLine("2) Update stock by ID");
+            Console.WriteLine("3) Search by ID");
+            Console.WriteLine("4) Show inventory & total value");
+            Console.WriteLine("5) Exit");
+            Console.Write("Choice: "); string c=Console.ReadLine();
+
+            if (c=="1"){
+                Console.Write("ID: "); string id=Console.ReadLine();
+                Console.Write("Name: "); string name=Console.ReadLine();
+                Console.Write("Qty: "); string qs=Console.ReadLine();
+                Console.Write("Price: "); string ps=Console.ReadLine();
+                int q; double p;
+                if (string.IsNullOrWhiteSpace(id)||string.IsNullOrWhiteSpace(name)||!int.TryParse(qs,out q)||!double.TryParse(ps,out p)||q<0||p<0){
+                    Console.WriteLine("Invalid."); continue;
+                }
+                items.Add(new Product(id.Trim(), name.Trim(), q, p));
+            }
+            else if (c=="2"){
+                Console.Write("ID: "); string id=Console.ReadLine(); bool found=false;
+                for (int i=0;i<items.Count;i++){
+                    if (items[i].Id==id){
+                        Console.Write("New Qty: "); string qs=Console.ReadLine(); int q;
+                        if (!int.TryParse(qs,out q)||q<0){ Console.WriteLine("Bad qty."); }
+                        else { items[i].Qty=q; Console.WriteLine("Updated."); }
+                        found=true; break;
+                    }
+                }
+                if (!found) Console.WriteLine("Not found.");
+            }
+            else if (c=="3"){
+                Console.Write("ID: "); string id=Console.ReadLine(); bool found=false;
+                for (int i=0;i<items.Count;i++){
+                    if (items[i].Id==id){
+                        Console.WriteLine(items[i].Id+" | "+items[i].Name+" | Qty:"+items[i].Qty+" | Price:"+items[i].Price);
+                        found=true; break;
+                    }
+                }
+                if (!found) Console.WriteLine("Not found.");
+            }
+            else if (c=="4"){
+                double total=0;
+                if (items.Count==0){ Console.WriteLine("Empty."); continue; }
+                Console.WriteLine("ID\tName\tQty\tPrice\tValue");
+                for (int i=0;i<items.Count;i++){
+                    double v=items[i].Value(); total+=v;
+                    Console.WriteLine(items[i].Id+"\t"+items[i].Name+"\t"+items[i].Qty+"\t"+items[i].Price+"\t"+v.ToString("0.00"));
+                }
+                Console.WriteLine("Total inventory value: "+total.ToString("0.00"));
+            }
+            else if (c=="5"){ break; }
+            else Console.WriteLine("Invalid.");
+        }
+    }
+}

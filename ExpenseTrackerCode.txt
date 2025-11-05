@@ -1,0 +1,122 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Expense
+{
+    public string Description;
+    public double Amount;
+
+    public Expense(string description, double amount)
+    {
+        Description = description;
+        Amount = amount;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<Expense> expenses = new List<Expense>();
+
+        // 1. Load existing data if file exists
+        string fileName = "expenses.txt";
+        if (File.Exists(fileName))
+        {
+            string[] lines = File.ReadAllLines(fileName);
+            foreach (string line in lines)
+            {
+                // Each line is "description|amount"
+                string[] parts = line.Split('|');
+                if (parts.Length == 2)
+                {
+                    string desc = parts[0];
+                    double amountParsed;
+                    if (double.TryParse(parts[1], out amountParsed))
+                    {
+                        expenses.Add(new Expense(desc, amountParsed));
+                    }
+                }
+            }
+        }
+
+        while (true)
+        {
+            Console.WriteLine("==== EXPENSE TRACKER ====");
+            Console.WriteLine("1) Add expense");
+            Console.WriteLine("2) Show all expenses");
+            Console.WriteLine("3) Show total spent");
+            Console.WriteLine("4) Save and Exit");
+            Console.Write("Choose: ");
+
+            string? choice = Console.ReadLine();
+            Console.WriteLine();
+
+            if (choice == "1")
+            {
+                Console.Write("Enter description: ");
+                string? desc = Console.ReadLine();
+                Console.Write("Enter amount: $");
+
+                string? amtStr = Console.ReadLine();
+                double amt;
+                if (!double.TryParse(amtStr, out amt))
+                {
+                    Console.WriteLine("Invalid amount. Try again.\n");
+                    continue;
+                }
+
+                if (string.IsNullOrWhiteSpace(desc))
+                {
+                    Console.WriteLine("Description cannot be empty.\n");
+                    continue;
+                }
+
+                expenses.Add(new Expense(desc.Trim(), amt));
+                Console.WriteLine("Expense added.\n");
+            }
+            else if (choice == "2")
+            {
+                if (expenses.Count == 0)
+                {
+                    Console.WriteLine("No expenses recorded.\n");
+                }
+                else
+                {
+                    Console.WriteLine("Your expenses:");
+                    for (int i = 0; i < expenses.Count; i++)
+                    {
+                        Console.WriteLine($"{i+1}. {expenses[i].Description} - ${expenses[i].Amount}");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else if (choice == "3")
+            {
+                double total = 0;
+                for (int i = 0; i < expenses.Count; i++)
+                {
+                    total += expenses[i].Amount;
+                }
+                Console.WriteLine($"Total spent: ${total}\n");
+            }
+            else if (choice == "4")
+            {
+                // Save to file
+                List<string> linesToWrite = new List<string>();
+                for (int i = 0; i < expenses.Count; i++)
+                {
+                    linesToWrite.Add(expenses[i].Description + "|" + expenses[i].Amount);
+                }
+                File.WriteAllLines(fileName, linesToWrite);
+                Console.WriteLine("Saved. Goodbye!");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice.\n");
+            }
+        }
+    }
+}

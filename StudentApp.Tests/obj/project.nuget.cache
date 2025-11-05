@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "Dh9XXI0NKhKdeGMf29E4KNYo9fNl3a/P/0GhJxgngwSpJ9vg3iZl6Iclsm67bWG5OPannQUcwCI4MfTBtIQWRg==",
+  "success": true,
+  "projectFilePath": "/Users/subhavbatra/Desktop/Code/C#_program/StudentApp.Tests/StudentApp.Tests.csproj",
+  "expectedPackageFiles": [
+    "/Users/subhavbatra/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/microsoft.codecoverage/17.6.0/microsoft.codecoverage.17.6.0.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/microsoft.net.test.sdk/17.6.0/microsoft.net.test.sdk.17.6.0.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/microsoft.testplatform.objectmodel/17.6.0/microsoft.testplatform.objectmodel.17.6.0.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/microsoft.testplatform.testhost/17.6.0/microsoft.testplatform.testhost.17.6.0.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/mstest.testadapter/3.0.4/mstest.testadapter.3.0.4.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/mstest.testframework/3.0.4/mstest.testframework.3.0.4.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/nuget.frameworks/5.11.0/nuget.frameworks.5.11.0.nupkg.sha512",
+    "/Users/subhavbatra/.nuget/packages/system.reflection.metadata/1.6.0/system.reflection.metadata.1.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}

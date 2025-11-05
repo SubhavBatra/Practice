@@ -1,0 +1,30 @@
+=== Student Record Manager ===
+1) Add Student
+2) View All
+3) Show Stats
+4) Save & Exit
+Enter choice: 1
+
+Enter name: Alice
+Enter mark: 85
+Student added!
+
+=== Student Record Manager ===
+1) Add Student
+2) View All
+3) Show Stats
+4) Save & Exit
+Enter choice: 2
+
+Name     Mark
+----------------
+Alice    85
+
+=== Student Record Manager ===
+Enter choice: 3
+
+Total students: 1
+Average mark: 85.00
+Highest: Alice (85)
+Lowest:  Alice (85)
+

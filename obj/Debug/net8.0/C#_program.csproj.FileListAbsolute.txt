@@ -1,0 +1,14 @@
+/Users/subhavbatra/Desktop/Code/C#_program/bin/Debug/net8.0/C#_program
+/Users/subhavbatra/Desktop/Code/C#_program/bin/Debug/net8.0/C#_program.deps.json
+/Users/subhavbatra/Desktop/Code/C#_program/bin/Debug/net8.0/C#_program.runtimeconfig.json
+/Users/subhavbatra/Desktop/Code/C#_program/bin/Debug/net8.0/C#_program.dll
+/Users/subhavbatra/Desktop/Code/C#_program/bin/Debug/net8.0/C#_program.pdb
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.GeneratedMSBuildEditorConfig.editorconfig
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.AssemblyInfoInputs.cache
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.AssemblyInfo.cs
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.csproj.CoreCompileInputs.cache
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.dll
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/refint/C#_program.dll
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.pdb
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/C#_program.genruntimeconfig.cache
+/Users/subhavbatra/Desktop/Code/C#_program/obj/Debug/net8.0/ref/C#_program.dll

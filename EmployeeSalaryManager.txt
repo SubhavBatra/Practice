@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+class Emp {
+    public string Name; public double Hours; public double Rate;
+    public Emp(string n, double h, double r) { Name=n; Hours=h; Rate=r; }
+    public double Pay() { return Hours * Rate; }
+}
+
+class Program {
+    static void Main() {
+        List<Emp> emps = new List<Emp>();
+        string file = "payroll.csv"; // Name,Hours,Rate,Pay
+
+        // Load if exists
+        if (File.Exists(file)) {
+            string[] lines = File.ReadAllLines(file);
+            for (int i = 1; i < lines.Length; i++) {
+                string line = lines[i]; if (line.Trim().Length == 0) continue;
+                string[] p = line.Split(',');
+                double h, r;
+                if (p.Length >= 3 && double.TryParse(p[1], out h) && double.TryParse(p[2], out r))
+                    emps.Add(new Emp(p[0], h, r));
+            }
+        }
+
+        while (true) {
+            Console.WriteLine("\n== Salary Manager ==");
+            Console.WriteLine("1) Add employee");
+            Console.WriteLine("2) View payroll");
+            Console.WriteLine("3) Total payout");
+            Console.WriteLine("4) Save & Exit");
+            Console.Write("Choice: ");
+            string c = Console.ReadLine();
+
+            if (c == "1") {
+                Console.Write("Name: "); string n = Console.ReadLine();
+                Console.Write("Hours: "); string hs = Console.ReadLine();
+                Console.Write("Rate: "); string rs = Console.ReadLine();
+                double h, r;
+                if (string.IsNullOrWhiteSpace(n) || !double.TryParse(hs, out h) || !double.TryParse(rs, out r) || h < 0 || r < 0) {
+                    Console.WriteLine("Invalid input."); continue;
+                }
+                emps.Add(new Emp(n.Trim(), h, r));
+            }
+            else if (c == "2") {
+                if (emps.Count == 0) { Console.WriteLine("No data."); continue; }
+                Console.WriteLine("Name\tHours\tRate\tPay");
+                for (int i = 0; i < emps.Count; i++)
+                    Console.WriteLine(emps[i].Name + "\t" + emps[i].Hours + "\t" + emps[i].Rate + "\t" + emps[i].Pay().ToString("0.00"));
+            }
+            else if (c == "3") {
+                double total = 0;
+                for (int i = 0; i < emps.Count; i++) total += emps[i].Pay();
+                Console.WriteLine("Total payout: " + total.ToString("0.00"));
+            }
+            else if (c == "4") {
+                List<string> lines = new List<string>();
+                lines.Add("Name,Hours,Rate,Pay");
+                for (int i = 0; i < emps.Count; i++)
+                    lines.Add(emps[i].Name + "," + emps[i].Hours + "," + emps[i].Rate + "," + emps[i].Pay().ToString("0.00"));
+                File.WriteAllLines(file, lines.ToArray());
+                Console.WriteLine("Saved. Bye!");
+                break;
+            }
+            else Console.WriteLine("Invalid choice.");
+        }
+    }
+}
