@@ -1,0 +1,15 @@
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/bin/Debug/net8.0/EmployeeManager
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/bin/Debug/net8.0/EmployeeManager.deps.json
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/bin/Debug/net8.0/EmployeeManager.runtimeconfig.json
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/bin/Debug/net8.0/EmployeeManager.dll
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/bin/Debug/net8.0/EmployeeManager.pdb
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.GeneratedMSBuildEditorConfig.editorconfig
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.AssemblyInfoInputs.cache
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.AssemblyInfo.cs
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.csproj.CoreCompileInputs.cache
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.sourcelink.json
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.dll
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/refint/EmployeeManager.dll
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.pdb
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/EmployeeManager.genruntimeconfig.cache
+/Users/subhavbatra/Desktop/Code/C#_program/EmployeeManager/obj/Debug/net8.0/ref/EmployeeManager.dll
